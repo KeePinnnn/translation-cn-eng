@@ -9,6 +9,7 @@ if __name__ == "__main__":
     list_cn = f.extract_col("Chinese")
     s = scrap(list_cn)
 
-    list_en = s.get_content()
-    f.write_data_en(list_en, "English")
+    dict_en = s.get_content()
+    print(dict_en)
+    f.write_data_en(dict_en, "English", "Chinese")
 

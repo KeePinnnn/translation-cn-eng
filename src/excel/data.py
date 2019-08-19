@@ -15,15 +15,14 @@ class file_info():
         self.df = self.data.parse("Sheet1")
         return self.df
 
-    def write_data_en(self, data:object, title:str):
-        if type(data) is list:
-            # TODO
-            # add in col and row to allow the data to be written in 
-            # from center
-            self.df.loc[ : , title] = data
+    def write_data_en(self, data:object, target_title:str, given_title:str):
+        if type(data) is dict:
+            for key, value in data.items():
+                index = self.df.index[self.df[given_title] == key][0]
+                self.df.loc[index, target_title] = value
 
             self.df.to_excel(self.file, sheet_name="Sheet1", index=False)
-            print("data has been write into f{self.file}")
+            print(f"data has been write into {self.file}")
         else:
             return "data should be in list format"
 
