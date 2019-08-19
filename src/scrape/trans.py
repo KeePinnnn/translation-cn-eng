@@ -13,7 +13,6 @@ class scrap():
     def get_content(self):
         list_en = []
         for each in self.list_cn:
-            print("https://www.youdao.com/w/" + each + "/#keyfrom=dict2.top")
             page = requests.get("https://www.youdao.com/w/" + each + "/#keyfrom=dict2.top")
 
             if page.status_code == 200:

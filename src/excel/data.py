@@ -19,13 +19,15 @@ class file_info():
     def write_data_en(self, data:object, title:str):
         if type(data) is list:
             self.en_data = pd.DataFrame({title: [data]})
+            self.col = self.df.columns.tolist()
+            self.index = self.col.index(title)
 
             for index, row in self.en_data.iterrows():
-                cell = 'C%d' % (index + 2)
+                cell = 'C%d' % (index + self.index)
                 self.df[cell] = row[0]
 
-            self.wb.save(self.file)
-            return "data has been save into f{self.file}"
+            self.df.to_excel(self.file, sheet_name="Sheet1", index=False)
+            print("data has been write into f{self.file}")
         else:
             return "data should be in list format"
 
