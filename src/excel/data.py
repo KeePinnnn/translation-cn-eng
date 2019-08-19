@@ -1,5 +1,5 @@
-from openpyxl import load_workbook
 import pandas as pd
+from openpyxl import load_workbook
 
 from config import FILE_PATH
 
@@ -18,13 +18,10 @@ class file_info():
 
     def write_data_en(self, data:object, title:str):
         if type(data) is list:
-            self.en_data = pd.DataFrame({title: [data]})
-            self.col = self.df.columns.tolist()
-            self.index = self.col.index(title)
-
-            for index, row in self.en_data.iterrows():
-                cell = 'C%d' % (index + self.index)
-                self.df[cell] = row[0]
+            # TODO
+            # add in col and row to allow the data to be written in 
+            # from center
+            self.df.loc[ : , title] = data
 
             self.df.to_excel(self.file, sheet_name="Sheet1", index=False)
             print("data has been write into f{self.file}")
