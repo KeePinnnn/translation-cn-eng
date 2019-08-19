@@ -11,7 +11,7 @@ class scrap():
         self.pattern = re.compile('^[a-zA-Z ]+$')
 
     def get_content(self):
-        list_en = []
+        dict_en = {}
         for each in self.list_cn:
             page = requests.get("https://www.youdao.com/w/" + each + "/#keyfrom=dict2.top")
 
@@ -22,10 +22,10 @@ class scrap():
                 sub_list = map(lambda x: x.strip(), sub_list)
                 str_list = ', '.join(str(x) for x in sub_list)
 
-                list_en.append(str_list)
+                dict_en[each] = str_list
 
             else:
                 print("word does not exist in website")
-                list_en.append("")
+                dict_en.append("")
         
-        return list_en
+        return dict_en
