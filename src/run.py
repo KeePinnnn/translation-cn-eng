@@ -6,7 +6,7 @@ if __name__ == "__main__":
     f.set_file_path("translation.xlsx")
     f.read_data()
 
-    list_cn = f.extract_col("Chinese")
+    list_cn = f.read_col_en("English", "Chinese")
     s = scrap(list_cn)
 
     dict_en = s.get_content()

@@ -28,3 +28,7 @@ class file_info():
 
     def extract_col(self, col:str):
         return self.df[col].tolist()
+
+    def read_col_en(self, target_col:str, given_col:str):
+        self.df_nan = self.df.loc[self.df.English.isnull()]
+        return self.df_nan[given_col].tolist()

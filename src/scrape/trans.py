@@ -19,7 +19,7 @@ class scrap():
                 soup = BeautifulSoup(page.content, 'html.parser')
                 word_group = soup.findAll("span", {"class": "contentTitle"})
                 sub_list = list(filter(self.pattern.search, [x.get_text() for x in word_group]))
-                sub_list = map(lambda x: x.strip(), sub_list)
+                sub_list = map(lambda x: x.strip().title(), sub_list)
                 str_list = ', '.join(str(x) for x in sub_list)
 
                 dict_en[each] = str_list
