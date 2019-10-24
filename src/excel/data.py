@@ -18,6 +18,7 @@ class file_info():
     def write_data_en(self, data:object, target_title:str, given_title:str):
         if type(data) is dict:
             for key, value in data.items():
+                print(key)
                 index = self.df.index[self.df[given_title] == key][0]
                 self.df.loc[index, target_title] = value
 
